@@ -2,9 +2,12 @@ package net.jwn.labmod.event;
 
 import net.jwn.labmod.Main;
 import net.jwn.labmod.experiments.SideOnlyTest;
+import net.jwn.labmod.item.ModItems;
 import net.jwn.labmod.util.KeyBindings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -16,10 +19,17 @@ public class ClientEvents {
     public static class ClientForgeEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
+            Player player = Minecraft.getInstance().player;
             if (KeyBindings.ONE_KEY.consumeClick()) {
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("skill 1"));
-                SideOnlyTest.clientOnlyMethod(Minecraft.getInstance().player);
-//                SideOnlyTest.serverOnlyMethod(Minecraft.getInstance().player);
+                if (player.getMainHandItem().getItem() == ModItems.TEST_ITEM.get()) {
+                    if (player.getMainHandItem().getCount() == 1) {
+                        player.sendSystemMessage(Component.literal("skill 1"));
+                        SideOnlyTest.clientOnlyMethod(player);
+//                        SideOnlyTest.serverOnlyMethod(Minecraft.getInstance().player);}
+                    } else if (player.getMainHandItem().getCount() == 2) {
+                        player.setDeltaMovement(0, 0.5, 0);
+                    }
+                }
             }
         }
     }
