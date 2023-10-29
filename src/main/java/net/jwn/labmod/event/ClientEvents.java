@@ -1,6 +1,7 @@
 package net.jwn.labmod.event;
 
 import net.jwn.labmod.Main;
+import net.jwn.labmod.client.ExampleHubOverlay;
 import net.jwn.labmod.experiments.SideOnlyTest;
 import net.jwn.labmod.item.ModItems;
 import net.jwn.labmod.util.KeyBindings;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,6 +30,8 @@ public class ClientEvents {
 //                        SideOnlyTest.serverOnlyMethod(Minecraft.getInstance().player);}
                     } else if (player.getMainHandItem().getCount() == 2) {
                         player.setDeltaMovement(0, 0.5, 0);
+                    } else if (player.getMainHandItem().getCount() == 3) {
+                        ExampleHubOverlay.button();
                     }
                 }
             }
@@ -39,6 +43,12 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
             event.register(KeyBindings.ONE_KEY);
+        }
+
+        @SubscribeEvent
+        public static void onRegisterGuiOverlaysEvent(RegisterGuiOverlaysEvent event) {
+            System.out.println("RegisterGuiOverlaysEvent");
+            event.registerAboveAll("example_gui", ExampleHubOverlay.HUD_EXAMPLE);
         }
     }
 }

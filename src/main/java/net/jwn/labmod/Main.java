@@ -1,10 +1,7 @@
 package net.jwn.labmod;
 
 import com.mojang.logging.LogUtils;
-<<<<<<< HEAD
 import net.jwn.labmod.block.ModBlocks;
-=======
->>>>>>> f2ffaafcb341428409a1489982abfb6d07900b97
 import net.jwn.labmod.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,10 +28,7 @@ public class Main
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
-<<<<<<< HEAD
         ModBlocks.register(modEventBus);
-=======
->>>>>>> f2ffaafcb341428409a1489982abfb6d07900b97
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

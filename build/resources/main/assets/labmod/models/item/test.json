@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "labmod:item/test"
+    "layer0": "labmod:item/no_image"
   }
 }
