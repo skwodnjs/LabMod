@@ -20,9 +20,9 @@ public class ExampleHubOverlay {
         int x = screenWidth / 2;
         int y = screenHeight;
 
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderSystem.setShaderTexture(0, IMAGE);
+//        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+//        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+//        RenderSystem.setShaderTexture(0, IMAGE);
 
         for(int i = 0; i < 10; i++) {
             guiGraphics.blit(IMAGE, x - 94 + (i * 9), y - 54, 0, 0, 12, 12,
