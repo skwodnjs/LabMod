@@ -32,8 +32,8 @@ public class ClientEvents {
                         player.setDeltaMovement(0, 0.5, 0);
                     } else if (player.getMainHandItem().getCount() == 3) {
                         ExampleHubOverlay.button();
-                    } else if (player.getMainHandItem().getCount() == 3) {
-                        Minecraft.getInstance().setScreen(new TestScreen(Component.literal("test")));
+                    } else if (player.getMainHandItem().getCount() == 4) {
+                        Minecraft.getInstance().setScreen(new TestScreen());
                     }
                 }
             }
