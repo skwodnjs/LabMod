@@ -1,14 +1,14 @@
 package net.jwn.labmod.event;
 
 import net.jwn.labmod.Main;
-import net.jwn.labmod.client.ExampleHubOverlay;
+import net.jwn.labmod.hud.ExampleHubOverlay;
 import net.jwn.labmod.experiments.SideOnlyTest;
 import net.jwn.labmod.item.ModItems;
-import net.jwn.labmod.util.KeyBindings;
+import net.jwn.labmod.keybinding.KeyBindings;
+import net.jwn.labmod.screen.TestScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -32,6 +32,8 @@ public class ClientEvents {
                         player.setDeltaMovement(0, 0.5, 0);
                     } else if (player.getMainHandItem().getCount() == 3) {
                         ExampleHubOverlay.button();
+                    } else if (player.getMainHandItem().getCount() == 3) {
+                        Minecraft.getInstance().setScreen(new TestScreen(Component.literal("test")));
                     }
                 }
             }

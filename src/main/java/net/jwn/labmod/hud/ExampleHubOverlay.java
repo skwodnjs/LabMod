@@ -1,9 +1,7 @@
-package net.jwn.labmod.client;
+package net.jwn.labmod.hud;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.jwn.labmod.Main;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
