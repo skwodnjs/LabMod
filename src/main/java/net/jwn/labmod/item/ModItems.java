@@ -13,7 +13,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MOD_ID);
 
     public static final RegistryObject<Item> TEST_ITEM = ITEMS.register("test",
-            () -> new Item(new Item.Properties()));
+            () -> new CustomItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

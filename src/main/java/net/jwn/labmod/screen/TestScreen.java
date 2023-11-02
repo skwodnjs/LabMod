@@ -34,54 +34,52 @@ public class TestScreen extends Screen {
     protected void init() {
         super.init();
 
-        // width 176 height 166
+        leftPos = (width - 176) / 2;
+        topPos = (height - 166) / 2;
 
-        this.leftPos = (width - 176) / 2;
-        this.topPos = (height - 166) / 2;
+        health = new ImageWidget(leftPos + 13, topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
+        damage = new ImageWidget(leftPos + 13, topPos + 36, 12, 12, DAMAGE_RESOURCE);
+        attack_speed = new ImageWidget(leftPos + 50, topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
+        attack_range = new ImageWidget(leftPos + 50, topPos + 36, 12, 12, NO_IMAGE_RESOURCE);
+        mining_speed = new ImageWidget(leftPos + 87, topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
+        movement_speed = new ImageWidget(leftPos + 87, topPos + 36, 12, 12, NO_IMAGE_RESOURCE);
+        luck = new ImageWidget(leftPos + 124, topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
+        coin = new ImageWidget(leftPos + 124, topPos + 36, 12, 12, NO_IMAGE_RESOURCE);
 
-        this.health = new ImageWidget(this.leftPos + 13, this.topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
-        this.damage = new ImageWidget(this.leftPos + 13, this.topPos + 36, 12, 12, DAMAGE_RESOURCE);
-        this.attack_speed = new ImageWidget(this.leftPos + 50, this.topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
-        this.attack_range = new ImageWidget(this.leftPos + 50, this.topPos + 36, 12, 12, NO_IMAGE_RESOURCE);
-        this.mining_speed = new ImageWidget(this.leftPos + 87, this.topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
-        this.movement_speed = new ImageWidget(this.leftPos + 87, this.topPos + 36, 12, 12, NO_IMAGE_RESOURCE);
-        this.luck = new ImageWidget(this.leftPos + 124, this.topPos + 23, 12, 12, NO_IMAGE_RESOURCE);
-        this.coin = new ImageWidget(this.leftPos + 124, this.topPos + 36, 12, 12, NO_IMAGE_RESOURCE);
+        health.setTooltip(Tooltip.create(Component.literal("health")));
+        damage.setTooltip(Tooltip.create(Component.literal("damage")));
+        attack_speed.setTooltip(Tooltip.create(Component.literal("attack_speed")));
+        attack_range.setTooltip(Tooltip.create(Component.literal("attack_range")));
+        mining_speed.setTooltip(Tooltip.create(Component.literal("mining_speed")));
+        movement_speed.setTooltip(Tooltip.create(Component.literal("movement_speed")));
+        luck.setTooltip(Tooltip.create(Component.literal("luck")));
+        coin.setTooltip(Tooltip.create(Component.literal("coin")));
 
-        this.health.setTooltip(Tooltip.create(Component.literal("health")));
-        this.damage.setTooltip(Tooltip.create(Component.literal("damage")));
-        this.attack_speed.setTooltip(Tooltip.create(Component.literal("attack_speed")));
-        this.attack_range.setTooltip(Tooltip.create(Component.literal("attack_range")));
-        this.mining_speed.setTooltip(Tooltip.create(Component.literal("mining_speed")));
-        this.movement_speed.setTooltip(Tooltip.create(Component.literal("movement_speed")));
-        this.luck.setTooltip(Tooltip.create(Component.literal("luck")));
-        this.coin.setTooltip(Tooltip.create(Component.literal("coin")));
+        addRenderableWidget(health);
+        addRenderableWidget(damage);
+        addRenderableWidget(attack_speed);
+        addRenderableWidget(attack_range);
+        addRenderableWidget(mining_speed);
+        addRenderableWidget(movement_speed);
+        addRenderableWidget(luck);
+        addRenderableWidget(coin);
 
-        addRenderableWidget(this.health);
-        addRenderableWidget(this.damage);
-        addRenderableWidget(this.attack_speed);
-        addRenderableWidget(this.attack_range);
-        addRenderableWidget(this.mining_speed);
-        addRenderableWidget(this.movement_speed);
-        addRenderableWidget(this.luck);
-        addRenderableWidget(this.coin);
-
-        this.delete = new ImageButton(this.leftPos + 152, this.topPos + 65, 16, 16, 52, 166, 0,
+        delete = new ImageButton(leftPos + 152, topPos + 65, 16, 16, 52, 166, 0,
                 BACKGROUND_RESOURCE, 256, 256,
                 pButton -> {
             flag = !flag;
             rebuildWidgets();
         });
-        addRenderableWidget(this.delete);
+        addRenderableWidget(delete);
 
         for (int i = 0; i < slots.length; i++) {
-            this.slots[i] = new ImageButton(this.leftPos + 8 + 18 * (i % 9), this.topPos + 89 + 24 * (i / 9), 16, 16, 0, 0, 0, NO_IMAGE_RESOURCE, 16, 16, pButton -> {});
-            addRenderableWidget(this.slots[i]);
+            slots[i] = new ImageButton(leftPos + 8 + 18 * (i % 9), topPos + 89 + 24 * (i / 9), 16, 16, 0, 0, 0, NO_IMAGE_RESOURCE, 16, 16, pButton -> {});
+            addRenderableWidget(slots[i]);
         }
 
-        this.lock = new ImageButton(this.leftPos + 18, this.topPos + 99, 7, 7, 68, 166, 0, BACKGROUND_RESOURCE, 256, 256, pButton -> {});
+        lock = new ImageButton(leftPos + 18, topPos + 99, 7, 7, 68, 166, 0, BACKGROUND_RESOURCE, 256, 256, pButton -> {});
         if (flag) {
-            addRenderableWidget(this.lock);
+            addRenderableWidget(lock);
         }
     }
 
@@ -90,8 +88,8 @@ public class TestScreen extends Screen {
         renderBackground(pGuiGraphics);
         pGuiGraphics.blit(BACKGROUND_RESOURCE, leftPos, topPos, 0, 0, 176, 166);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-
-        pGuiGraphics.drawString(this.font, "Stuff I Found", this.leftPos + 7, this.topPos + 7, 0x404040, false);
+        
+        pGuiGraphics.drawString(font, "Stuff I Found", leftPos + 7, topPos + 7, 0x404040, false);
     }
 
     @Override
@@ -102,7 +100,7 @@ public class TestScreen extends Screen {
     @Override
     public boolean keyPressed(int pKeyCode, int pScanCode, int pModifiers) {
         if (pKeyCode == GLFW.GLFW_KEY_Z) {
-            this.onClose();
+            onClose();
             return true;
         }
         return super.keyPressed(pKeyCode, pScanCode, pModifiers);

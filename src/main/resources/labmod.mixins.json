@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.jwn.labmod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "modid.refmap.json",
+  "mixins": [
+    "MixinCake",
+    "MixinSkeleton"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}
